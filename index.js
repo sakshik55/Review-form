@@ -12,7 +12,6 @@ const con=db.createConnection({
   database: "lowes"
 });
 
-//const con = db.createConnection('mysql://root:rootroot@host/db?debug=true&charset=BIG5_CHINESE_CI&timezone=-0700');
 con.connect((err)=>{
     if(!err)
     console.log("Connected");
@@ -57,7 +56,6 @@ app.post("/", function(req,res){
       });
     }
   }
-    //console.log("Number of records inserted: " + result.affectedRows);
 });
 });
 
