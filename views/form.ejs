@@ -1,0 +1,50 @@
+<%- include('./partials/header') %>
+<div class=container>
+  <div class="jumbotron">
+    <img src="https://www.lowescdn.com/images/ui/LowesLogo.svg">
+    <h1> LOWE'S HOME IMPROVEMENT</h1>
+    <p> REVIEW FORM</p>
+  </div>
+
+<div class="con">
+<form action="/" method="post" role="form-horizontal">
+  <div class="form-group">
+    <label for="name"><b>NAME</b></label>
+    <input class="form-control" type="text" placeholder="Enter name" name="name" required>
+    <br>
+    <label for="email"><b>E-MAIL</b></label>
+    <input class="form-control" type="email" placeholder="enter email" name="email" required>
+    <br>
+    <label for="rating"><b>RATING</b></label><br>
+    <div class="rating">
+         <input type="radio" name="rating" id="str5" value="5">  <span class="rating-star"></span>
+         <input type="radio" name="rating" id="str4" value="4">  <span  class="rating-star"></span>
+         <input type="radio" name="rating" id="str3" value="3">  <span  class="rating-star"></span>
+         <input type="radio" name="rating" id="str2" value="2">  <span  class="rating-star"></span>
+         <input type="radio" name="rating" id="str1" value="1">  <span class="rating-star"></span>
+    </div>
+     <br>
+    <label for="review"><b>REVIEW</b></label>
+    <input class="form-control" type="text" placeholder="enter review" name="review" required>
+     <br>
+    <button type="submit" class="btn btn-primary">SUBMIT</button>
+  </div>
+<div>
+</form>
+</div>
+
+<script type="text/javascript">
+var error = <%= derr %>;
+
+if(error=== 'err')
+{
+  showAlert(error);
+}
+
+
+showAlert = function(err) {
+  alert('error: ' + err);
+}
+</script>
+
+<%- include( './partials/footer') %>
