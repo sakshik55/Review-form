@@ -33,18 +33,19 @@
 </form>
 </div>
 
-<!-- <script type="text/javascript">
-var error = <%= derr %>;
 
-if(error=== 'err')
-{
-  showAlert(error);
-}
+<% if (derror==='error') { %>
+    <script language="javascript">
+    alert("E-MAIL ALREADY REGISTERED");
+    </script>
+  <% } %>>
+
+<% if (derror==='success') { %>
+      <script language="javascript">
+      alert("REVIEW SUCCESSFULLY REGISTERED");
+      </script>
+  <% } %>>
 
 
-showAlert = function(err) {
-  alert('error: ' + err);
-}
-</script> -->
 
 <%- include( './partials/footer') %>

@@ -3,7 +3,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const db = require('mysql');
-var JSAlert = require("js-alert");
+const session        = require('express-session'),
+      cookieParser   = require('cookie-parser'),
+      flash          = require('connect-flash');
+
 
 const con=db.createConnection({
   localAddress:"127.0.0.1",
@@ -26,10 +29,17 @@ app.set('view engine','ejs');
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(session({
+    secret:"secret",
+    saveUninitialized:true,
+    resave: false
+}));
+app.use(cookieParser());
+
 
 app.get("/", function(req,res){
   res.render("form",{
-    derr: null
+    derror : null
   });
 });
 
@@ -40,9 +50,10 @@ app.post("/", function(req,res){
   var sql= "INSERT INTO `lowes`.`form`(`name`,`email`,`rating`,`reviews`) VALUES (?,?,?,?)";
   var values= [req.body.name,req.body.email ,a,req.body.review];
   con.query(sql,values, function (err, result) {
-      if(err.code=='ER_DUP_ENTRY'){
-        res.render("form", {
-          derr: 'err'
+      if( err && err.code=='ER_DUP_ENTRY'){
+        console.log(err.code);
+        res.render("form",{
+            derror: 'error'
         });
     }
     else{
@@ -51,8 +62,8 @@ app.post("/", function(req,res){
         throw err;
       }
       else{
-      res.redirect("/",{
-        derr: null
+      res.render("form",{
+        derror : 'success'
       });
     }
   }
