@@ -18,6 +18,7 @@
     "express-flash-notification": "^0.5.0",
     "express-session": "^1.17.0",
     "js-alert": "^1.0.4",
+    "mongodb": "^3.5.6",
     "mysql": "github:mysqljs/mysql",
     "popups": "^1.1.3"
   },
